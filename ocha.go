@@ -1,9 +1,17 @@
 package main
 
 import (
-  "fmt"
+	"github.com/orbitaljin/ocha/internal/store"
 )
 
 func main() {
-  fmt.Println("Hello, World!")
+		db, err := store.NewDB("./data/db.db")
+		if err != nil {
+				panic("Failed to connect to the database")
+		}	
+		err = db.Init()
+		if err != nil {
+			panic("Failed to init db")
+		}
 }
+	
