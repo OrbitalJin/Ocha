@@ -2,6 +2,8 @@
 
 Journaling in the comfort of your terminal emulator.
 
+---
+
 ocha is supposed to be a cross-platform obsidian-like app in the terminal, where you an stores notes, lists, passwords & ssh-keys.
 
 ## Todo
@@ -27,7 +29,7 @@ ocha is supposed to be a cross-platform obsidian-like app in the terminal, where
 -   [x] Editing
 -   [x] Creating
 -   [x] Renaming
--   [ ] Markdown view
+-   [x] Markdown view
 
 ## Features
 
@@ -36,7 +38,7 @@ ocha is supposed to be a cross-platform obsidian-like app in the terminal, where
 ### CLI
 
 -   Cobra
--   cli
+-   urfave/cli
 
 ### Storage
 
@@ -44,7 +46,7 @@ ocha is supposed to be a cross-platform obsidian-like app in the terminal, where
 
 -   Postgres + gorm
 -   boltdb <- worth looking into
--   sqlite
+-   gorm + sqlite
 
 ### TUI
 

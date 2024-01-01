@@ -19,7 +19,7 @@ func (m Notepad) EditorView() string {
 		"%s.\n\n%s\n\n%s",
 		fmt.Sprintf("Editing: %s", m.note.ItemTitle),
 		m.ta.View(),
-		"ctrl+q to quit | ctrl+s to save | ctrl+v open viewer",
+		helpStyle("\nctrl+s: Save • ctrl+p: View • ctrl+q: Quit\n"),
 	) + "\n\n"
 }
 
@@ -30,8 +30,9 @@ func (m Notepad) UpdateEditor(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
 		switch msg.Type {
-		case tea.KeyCtrlQ: m.state = listing
+		case tea.KeyCtrlQ: m.setState(listing)
 		case tea.KeyCtrlS: m.saveNote()
+		case tea.KeyCtrlP: m.onView()
 		default:
 			if !m.ta.Focused() {
 				m.ta.Focus()

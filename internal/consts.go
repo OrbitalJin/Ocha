@@ -8,7 +8,7 @@ type keymap struct {
 	Enter  key.Binding
 	Rename key.Binding
 	Delete key.Binding
-	View   key.Binding
+	Render key.Binding
 	Back   key.Binding
 }
 
@@ -30,8 +30,8 @@ var Keymap = keymap{
 		key.WithKeys("d"),
 		key.WithHelp("d", "delete"),
 	),
-	View: key.NewBinding(
-		key.WithKeys("v"),
-		key.WithHelp("v", "view"),
+	Render: key.NewBinding(
+		key.WithKeys("p"),
+		key.WithHelp("p", "render"),
 	),
 }

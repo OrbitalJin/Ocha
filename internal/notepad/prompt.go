@@ -8,6 +8,7 @@ import (
 
 func NewPrompt(m *Notepad) {
 	m.prompt = textinput.New()
+	m.prompt.Prompt = "$ "
 	m.prompt.Placeholder = "Title"
 }
 
@@ -18,7 +19,7 @@ func (m *Notepad) UpdatePrompt(msg tea.Msg) (tea.Model, tea.Cmd) {
 	case tea.KeyMsg:
 		switch msg.Type {
 		case tea.KeyEnter: m.onPromptSubmit()
-		case tea.KeyEsc: m.state = listing
+		case tea.KeyEsc: m.setState(listing) 
 		}
 
 	// We handle errors just like any other message
