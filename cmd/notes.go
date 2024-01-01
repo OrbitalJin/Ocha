@@ -1,17 +1,19 @@
-package notes
+package cmd
 
 import (
 	"fmt"
 
+	"github.com/orbitaljin/ocha/internal"
+	"github.com/orbitaljin/ocha/internal/notepad"
 	"github.com/orbitaljin/ocha/internal/store"
 	"github.com/orbitaljin/ocha/internal/store/schema"
 	"github.com/urfave/cli/v2"
 )
 
-func Handler(db *store.DB) *cli.Command {
+func NotesHandler(db *store.DB) *cli.Command {
 	return &cli.Command{
 			Name:    "notes",
-			Aliases: []string{"n"},
+			Aliases: []string{"maccha", "n"},
 			Usage:   "manage your notes",
 			Subcommands: subcommands(db),
 		}
@@ -64,9 +66,8 @@ func list(db *store.DB) *cli.Command {
 		Action: func(ctx *cli.Context) error {
 			var records []schema.Note
 			db.DB().Find(&records)
-			for record := range records {
-				fmt.Println(record)
-			}
+			app := notepad.New(db, records)
+			internal.Launch(app)
 			return nil
 		},
 	}

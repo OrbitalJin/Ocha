@@ -1,7 +1,7 @@
 package app
 
 import (
-	notes "github.com/orbitaljin/ocha/cmd"
+	"github.com/orbitaljin/ocha/cmd"
 	"github.com/orbitaljin/ocha/internal/store"
 	"github.com/urfave/cli/v2"
 )
@@ -10,7 +10,7 @@ import (
 var commands []*cli.Command = make([]*cli.Command, 0)
 
 func Cog(db *store.DB) []*cli.Command {
-	commands = append(commands, notes.Handler(db))
+	commands = append(commands, cmd.NotesHandler(db))
 	return commands
 }
 

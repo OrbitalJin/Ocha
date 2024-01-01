@@ -15,7 +15,7 @@ ocha is supposed to be a cross-platform obsidian-like app in the terminal, where
 
 ### CLI
 
--   [ ] notes (maccha)
+-   [x] notes (maccha)
 -   [ ] boards (sencha)
 -   [ ] vault (bancha)
 -   [ ] backup
@@ -23,10 +23,10 @@ ocha is supposed to be a cross-platform obsidian-like app in the terminal, where
 
 ### TUI
 
--   [ ] Listing
--   [ ] Editing
--   [ ] Creating
--   [ ] Renaming
+-   [x] Listing
+-   [x] Editing
+-   [x] Creating
+-   [x] Renaming
 -   [ ] Markdown view
 
 ## Features
