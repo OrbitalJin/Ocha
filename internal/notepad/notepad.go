@@ -57,7 +57,7 @@ func New(db *store.DB, notes []schema.Note) Notepad {
 			internal.Keymap.Create,
 			internal.Keymap.Rename,
 			internal.Keymap.Delete,
-			internal.Keymap.Render,
+			internal.Keymap.View,
 		}
 	}
 	NewEditor(&m)
@@ -113,7 +113,7 @@ func (m Notepad) UpdateSelf(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case key.Matches(msg, internal.Keymap.Delete): m.onDelete()
 		case key.Matches(msg, internal.Keymap.Create): m.onCreate()
 		case key.Matches(msg, internal.Keymap.Rename): m.onRename()
-		case key.Matches(msg, internal.Keymap.Render): m.onView()
+		case key.Matches(msg, internal.Keymap.View): m.onView()
 		}
 	case tea.WindowSizeMsg:
 		h, v := docStyle.GetFrameSize()

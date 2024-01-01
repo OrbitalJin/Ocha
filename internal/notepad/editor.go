@@ -19,7 +19,7 @@ func (m Notepad) EditorView() string {
 		"%s.\n\n%s\n\n%s",
 		fmt.Sprintf("Editing: %s", m.note.ItemTitle),
 		m.ta.View(),
-		helpStyle("\nctrl+s: Save • ctrl+p: View • ctrl+q: Quit\n"),
+		helpStyle("\nctrl+s: save • ctrl+p: preview • ctrl+q: quit\n"),
 	) + "\n\n"
 }
 

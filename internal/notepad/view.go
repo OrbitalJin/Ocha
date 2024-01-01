@@ -17,7 +17,7 @@ func NewView(m *Notepad) {
 }
 
 func (m *Notepad) ViewView() string {
-	return m.view.View() + helpStyle("\n↑/↓: Navigate • esc: Quit\n")
+	return m.view.View() + helpStyle("\n↑/↓: navigate • esc: Quit\n")
 }
 
 func (m *Notepad) UpdateViewer(msg tea.Msg) (tea.Model, tea.Cmd) {
