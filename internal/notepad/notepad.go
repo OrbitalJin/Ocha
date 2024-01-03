@@ -160,6 +160,10 @@ func (m *Notepad) onCreate() {
 // On item rename prompt
 func (m *Notepad) onRename() {
 	m.setState(renaming)
+	note := m.highlightedNote()
+	if note != nil {
+		m.prompt.SetValue(note.Title())
+	}
 	m.prompt.Focus()
 }
 

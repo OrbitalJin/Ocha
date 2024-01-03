@@ -18,6 +18,11 @@ ocha is supposed to be a cross-platform obsidian-like app in the terminal, where
 ### CLI
 
 -   [x] notes (maccha)
+    -   [x] Create
+    -   [x] Edit
+    -   [x] Rename
+    -   [x] Delete
+    -   [x] Import
 -   [ ] boards (sencha)
 -   [ ] vault (bancha)
 -   [ ] backup

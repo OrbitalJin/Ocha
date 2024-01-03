@@ -9,6 +9,8 @@ import (
 
 func NewEditor(m *Notepad) {
 	ta := textarea.New()
+	ta.SetWidth(78)
+	ta.SetHeight(20)
 	ta.Placeholder = "Start typing..."
 	m.ta = ta
 }

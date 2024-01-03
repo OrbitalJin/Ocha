@@ -7,6 +7,7 @@ import (
 	"github.com/orbitaljin/ocha/internal/notepad"
 	"github.com/orbitaljin/ocha/internal/store"
 	"github.com/orbitaljin/ocha/internal/store/schema"
+	"github.com/orbitaljin/ocha/utils"
 	"github.com/urfave/cli/v2"
 )
 
@@ -23,6 +24,7 @@ func subcommands(db *store.DB) []*cli.Command {
 		subcommands := make([]*cli.Command, 0)
 		subcommands = append(subcommands, create(db))
 		subcommands = append(subcommands, list(db))
+		subcommands = append(subcommands, import_(db))
 		return subcommands
 }
 
@@ -57,12 +59,6 @@ func list(db *store.DB) *cli.Command {
 		Name: "list",
 		Aliases: []string{"ls"},
 		Usage: "list all your notes",
-		Flags: []cli.Flag {
-			&cli.StringFlag {
-				Name: "filter",
-				Usage: "filter out the notes",
-			},
-		},
 		Action: func(ctx *cli.Context) error {
 			var records []schema.Note
 			db.DB().Find(&records)
@@ -70,5 +66,34 @@ func list(db *store.DB) *cli.Command {
 			internal.Launch(app)
 			return nil
 		},
+	}
+}
+
+func import_(db *store.DB) *cli.Command {
+	return &cli.Command{
+		Name: "import",
+		Aliases: []string{"i"},
+		Flags: []cli.Flag{
+			&cli.StringFlag{
+				Name:  "path",
+				Usage: "specify the file path",
+			},
+		},
+		Action: func (ctx *cli.Context) error {
+			path := ctx.String("path")
+			if path == "" {
+				return fmt.Errorf("no file provided")
+			}
+			name, content, err := utils.Read(path)
+			if err != nil {
+				return err
+			}
+			db.DB().Create(&schema.Note{
+				ItemTitle: name,
+				Content: content,
+			})
+			fmt.Println("Imported note:", name)
+			return nil
+		},		
 	}
 }
