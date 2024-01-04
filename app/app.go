@@ -16,8 +16,8 @@ func Cog(db *store.DB) []*cli.Command {
 
 func New(db *store.DB) *cli.App {
 	return &cli.App{
-		Name: "Gault",
-		Usage: "Cli app like osi lmaoo",
+		Name: "ocha",
+		Usage: "Sip away, type away!",
 		Commands: Cog(db),
 	}
 }
