@@ -73,6 +73,7 @@ func import_(db *store.DB) *cli.Command {
 	return &cli.Command{
 		Name: "import",
 		Aliases: []string{"i"},
+		Usage: "import a markdown, rich or plain text file as a note",
 		Flags: []cli.Flag{
 			&cli.StringFlag{
 				Name:  "path",
